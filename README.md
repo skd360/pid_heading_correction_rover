@@ -4,6 +4,14 @@ An ESP32-based four-motor differential-drive rover that uses a **BNO055 IMU** an
 
 > **Current behavior:** The checked-in firmware sets `base_speed = 0`, so it is configured for **stationary, on-the-spot heading correction**. The motor mixing algorithm also supports heading correction **while driving**, but forward-motion scheduling is not enabled in the active code.
 
+## 🎥 Demonstration
+
+### PID-Based Heading Correction
+
+The rover detects heading deviations using IMU feedback and applies differential motor control to restore its target heading.
+
+![PID Rover Demonstration](assets/rover_demo.gif)
+
 ## How it works
 
 1. `app_main()` initializes the BNO055 and PWM motor channels, captures the initial target yaw, and launches the PID and motor tasks.
@@ -39,12 +47,6 @@ The angular error is normalized to the range `[-180°, +180°]`:
 ```c
 error = normalize_angle(target_yaw - current_yaw);
 ```
-
-The PID controller calculates:
-
-\[
-u(t) = K_p e(t) + K_i \int e(t)\,dt + K_d\frac{de(t)}{dt}
-\]
 
 Current source-code gains (`main/pid.c`): **`Kp = 8`, `Ki = 0`, `Kd = 1`**. The implementation uses a fixed `dt = 0.02 s` and a nominal **50 Hz** task cadence. With `Ki = 0`, its current behavior is effectively **PD control**; an integral accumulator exists but does not contribute to the output.
 
@@ -151,6 +153,4 @@ Replace `COMx` with the actual serial port. The code uses ESP-IDF's newer `drive
 4. Log target yaw, actual yaw, motor duties, and tracking error to assess controller performance under motion.
 5. Add encoder feedback or speed estimation if consistent ground-speed control is needed.
 
-## License
 
-No license is specified in the uploaded project. Add a `LICENSE` file if you want to define reuse terms.
