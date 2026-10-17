@@ -2,6 +2,14 @@
 
 An ESP32-based four-motor differential-drive rover that uses a **BNO055 IMU** and a **PID heading controller** to detect yaw deviations and command corrective motor speeds. Built with **ESP-IDF**, **FreeRTOS**, I²C sensor communication, and LEDC PWM motor control.
 
+
+## My Story
+This is an image of how my study table looked while building this thing. It was an amazing experience working on this tiny kid and it taught me to push myself beyond my limits and capabilities. So if you are stuck somewhere while working on your project dont give up, I almost blew up the power distribution board and the motor driver at 4am after working on it for like 9hrs. 
+So yeaa after all that kaboom it still ended up meeting my checklist and I was able to finish things on time. 
+ALL THE BESHTT!!!
+![Rover](testing_pics\testing_pic.jpeg)  
+
+
 > **Current behavior:** The checked-in firmware sets `base_speed = 0`, so it is configured for **stationary, on-the-spot heading correction**. The motor mixing algorithm also supports heading correction **while driving**, but forward-motion scheduling is not enabled in the active code.
 
 ## 🎥 Demonstration
@@ -11,6 +19,7 @@ An ESP32-based four-motor differential-drive rover that uses a **BNO055 IMU** an
 The rover detects heading deviations using IMU feedback and applies differential motor control to restore its target heading.
 
 ![PID Rover Demonstration](assets/rover_demo.gif)
+
 
 ## How it works
 
