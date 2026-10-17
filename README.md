@@ -9,7 +9,7 @@ So yeaa after all that kaboom it still ended up meeting my checklist and I was a
 ALL THE BESHTT!!!
 
 
-![Rover](testing_pics\testing_pic.jpeg)  
+![Rover](assets/testing_pic.jpeg)  
 
 
 > **Current behavior:** The checked-in firmware sets `base_speed = 0`, so it is configured for **stationary, on-the-spot heading correction**. The motor mixing algorithm also supports heading correction **while driving**, but forward-motion scheduling is not enabled in the active code.
